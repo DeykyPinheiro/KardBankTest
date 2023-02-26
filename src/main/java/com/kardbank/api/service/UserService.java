@@ -25,12 +25,12 @@ public class UserService {
     }
 
     public Page<ListUserDto> ListAll(Pageable page) {
-//        Page ListUser = userRepository.findAllByActive(page).map(ListUserDto::new);
-        Page ListUser = userRepository.findAll(page).map(ListUserDto::new);
+        Page ListUser = userRepository.findAllByActiveTrue(page).map(ListUserDto::new);
+//        Page ListUser = userRepository.findAll(page).map(ListUserDto::new);
         return ListUser;
     }
 
-    public void update(UpdateUserDto user){
+    public void update(UpdateUserDto user) {
         User old =  userRepository.getReferenceById(user.id());
         old.update(user);
     }

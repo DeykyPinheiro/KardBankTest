@@ -8,5 +8,5 @@ import org.springframework.data.domain.Page;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-//    Page<User> findAllByActive(Pageable page);
+    Page<User> findAllByActiveTrue(Pageable page);
 }
