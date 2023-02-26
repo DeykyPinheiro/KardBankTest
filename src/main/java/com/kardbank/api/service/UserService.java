@@ -19,26 +19,30 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public void save(SaveUserDto data) {
-        User user = new User(data);
-        userRepository.save(user);
+    public void save(SaveUserDto data) throws Exception {
+
+        User old = userRepository.findByEmail(data.email());
+        if (old != null) {
+            throw  new Exception("Usuario Ja Cadastrado");
+        } else {
+            User user = new User(data);
+            userRepository.save(user);
+        }
     }
 
     public Page<ListUserDto> ListAll(Pageable page) {
         Page ListUser = userRepository.findAllByActiveTrue(page).map(ListUserDto::new);
-//        Page ListUser = userRepository.findAll(page).map(ListUserDto::new);
         return ListUser;
     }
 
     public void update(UpdateUserDto user) {
-        User old =  userRepository.getReferenceById(user.id());
+        User old = userRepository.getReferenceById(user.id());
         old.update(user);
     }
 
-    public void delete(Long id){
-        User old =  userRepository.getReferenceById(id);
+    public void delete(Long id) {
+        User old = userRepository.getReferenceById(id);
         old.delete();
-        System.out.println("deletei id: " + id);
     }
 
 }

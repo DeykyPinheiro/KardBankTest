@@ -23,7 +23,7 @@ public class UserController {
 
     @PostMapping
     @Transactional
-    public void saveUser(@RequestBody @Valid SaveUserDto user) {
+    public void saveUser(@RequestBody @Valid SaveUserDto user) throws Exception {
         userService.save(user);
     }
 
