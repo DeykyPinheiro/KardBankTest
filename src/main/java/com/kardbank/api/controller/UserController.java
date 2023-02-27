@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping
-    public Page<ListUserDto> ListAll(@PageableDefault(size = 10, sort = {"name"}) Pageable page) {
+    public Page<ListUserDto> ListAll(@PageableDefault(size = 10) Pageable page) {
         return userService.ListAll(page);
     }
 
