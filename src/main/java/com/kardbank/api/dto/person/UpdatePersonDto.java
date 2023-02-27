@@ -1,13 +1,11 @@
-package com.kardbank.api.dto.user;
+package com.kardbank.api.dto.person;
 
-import com.kardbank.api.model.User;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
 
-public record UpdateUserDto(
+public record UpdatePersonDto(
         @NotNull
         Long id,
 

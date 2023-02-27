@@ -1,7 +1,7 @@
 package com.kardbank.api.model;
 
-import com.kardbank.api.dto.user.SaveUserDto;
-import com.kardbank.api.dto.user.UpdateUserDto;
+import com.kardbank.api.dto.person.SavePersonDto;
+import com.kardbank.api.dto.person.UpdatePersonDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class User {
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class User {
     private boolean active;
 
 
-    public User(SaveUserDto data) {
+    public Person(SavePersonDto data) {
         this.active = true;
         this.name = data.name();
         this.lastName = data.lastName();
@@ -40,7 +40,7 @@ public class User {
         this.birthDate = data.birthDate();
     }
 
-    public void update(UpdateUserDto data) {
+    public void update(UpdatePersonDto data) {
 
         if (data.name() != null) {
             this.name = data.name();
