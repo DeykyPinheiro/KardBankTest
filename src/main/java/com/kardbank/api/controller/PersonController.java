@@ -12,6 +12,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/person")
 public class PersonController {
@@ -32,13 +33,13 @@ public class PersonController {
 
     @PutMapping
     @Transactional
-    public void updatePerson(@RequestBody @Valid UpdatePersonDto person){
+    public void updatePerson(@RequestBody @Valid UpdatePersonDto person) {
         personService.update(person);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void deletePerson(@PathVariable Long id){
+    public void deletePerson(@PathVariable Long id) {
         personService.delete(id);
     }
 }

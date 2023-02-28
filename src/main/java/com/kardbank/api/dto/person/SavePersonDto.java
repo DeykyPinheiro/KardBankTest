@@ -1,17 +1,23 @@
 package com.kardbank.api.dto.person;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import com.kardbank.api.dto.addressDto.SaveAddressDto;
+import com.kardbank.api.model.address.Address;
+import com.kardbank.api.model.phoneNumber.PhoneNumber;
+import jakarta.validation.constraints.*;
 
 import java.util.Date;
+import java.util.List;
 
 public record SavePersonDto(
         @NotBlank String name,
 
         @NotBlank String lastName,
 
-        @NotBlank @Email String email,
+        @NotNull Date birthDate,
 
-        @NotNull Date birthDate) {
+        @NotBlank String cpf,
+
+        @NotBlank @Email String email
+
+) {
 }

@@ -1,6 +1,6 @@
 package com.kardbank.api.repository;
 
-import com.kardbank.api.model.Person;
+import com.kardbank.api.model.person.Person;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,6 @@
 package com.kardbank.api.dto.person;
 
-import com.kardbank.api.model.Person;
+import com.kardbank.api.model.person.Person;
 
 import java.util.Date;
 
