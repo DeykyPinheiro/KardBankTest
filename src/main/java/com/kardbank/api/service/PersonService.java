@@ -20,22 +20,7 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-
-//    ao invez de chamar a repository eu tenho que chamar a service e
-//    fazer tudo que precisa ser feito la dentro
-//    @Autowired
-//    private AddressRepository addressRepository;
-
-    @Autowired
-    private AddressService addressService;
-
-    @Autowired
-    private PhoneNumberRepository phoneNumberRepository;
-
-
     public void save(SavePersonDto data) throws Exception {
-        System.out.println(data);
-
         Person old = personRepository.findByEmail(data.email());
         if (old != null) {
             throw new Exception("Usuario Ja Cadastrado");

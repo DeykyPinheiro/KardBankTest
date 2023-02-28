@@ -39,14 +39,13 @@ public class AddressService {
         if (addressList.size() < 1) {
             addressRepository.save(address);
         }
-
         boolean isAddressRegistered = false;
-
         for (Address item : addressList) {
             if (item.equals(address)) {
                 isAddressRegistered = true;
             }
         }
+
         if (!isAddressRegistered){
             addressRepository.save(address);
         }

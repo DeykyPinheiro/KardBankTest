@@ -1,13 +1,11 @@
 package com.kardbank.api.model.phoneNumber;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.kardbank.api.dto.phoneNumber.PhoneNumberDto;
+import com.kardbank.api.dto.phoneNumber.SavePhoneNumberDto;
+import com.kardbank.api.dto.phoneNumber.UpdatePhoneNumberDto;
 import com.kardbank.api.model.person.Person;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import java.util.List;
 
 @Entity
 @Table
@@ -26,12 +24,17 @@ public class PhoneNumber {
     @JsonIgnoreProperties("address")
     private Person person;
 
-    private String phone;
+    private String phoneNumber;
 
+    public PhoneNumber(SavePhoneNumberDto data) {
+        this.person = new Person(data.idPerson());
+        this.phoneNumber = data.phoneNumber();
+    }
 
-    public PhoneNumber(PhoneNumberDto phone) {
-//        this.person = new Person(phone.id())
-        this.phone = phone.phone();
+    public void update(UpdatePhoneNumberDto data) {
+        if (data.phoneNumber() != null) {
+            this.phoneNumber = data.phoneNumber();
+        }
     }
 
 
