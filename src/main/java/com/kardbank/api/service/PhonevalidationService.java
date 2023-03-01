@@ -24,7 +24,10 @@ public class PhonevalidationService {
         return entity;
     }
 
-
+//    public Boolean isValidNumber(String phoneNumber) {
+//        ResponseEntity<Phonevalidation> entity = this.phonevalidation(phoneNumber);
+//        return entity.getBody().valid();
+//    }
 
 
 }

@@ -50,8 +50,6 @@ public class PersonService {
             person.setPhoneNumber(phoneNumberRepository.findAllByPerson(new Person(person.getId())));
             person.setAddressList(addressRepository.findAllByPerson(new Person(person.getId())));
         });
-//        List<ListAddressDto> listAddress = addressRepository.findAllByPerson();
-//        List<ListPersonDto> listPhoneNumber = phoneNumberRepository.findAllByPerson();
         return ListPerson;
     }
 
@@ -61,8 +59,8 @@ public class PersonService {
     }
 
     public void delete(Long id) {
-        Person old = personRepository.getReferenceById(id);
-        old.delete();
+        Person person = personRepository.getReferenceById(id);
+        personRepository.delete(person);
     }
 
 }

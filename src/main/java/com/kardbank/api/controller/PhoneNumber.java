@@ -37,7 +37,7 @@ public class PhoneNumber {
 
     @PutMapping
     @Transactional
-    public void updatePhoneNumber(@RequestBody @Valid UpdatePhoneNumberDto phone) {
+    public void updatePhoneNumber(@RequestBody @Valid UpdatePhoneNumberDto phone) throws Exception {
         phoneNumberService.update(phone);
     }
 

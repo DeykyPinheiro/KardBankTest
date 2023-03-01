@@ -19,9 +19,17 @@ public class PhoneNumberService {
     @Autowired
     private PhoneNumberRepository phoneNumberRepository;
 
+    @Autowired
+    private PhonevalidationService phonevalidationService;
+
 
     public void save(SavePhoneNumberDto data) throws Exception {
-        System.out.println(data);
+//        System.out.println(data);
+
+        var isValidNumber = phonevalidationService.phonevalidation(data.phoneNumber()).getBody().valid();
+        if (!isValidNumber) {
+            throw new Exception("Celular invalido");
+        }
 
         PhoneNumber old = phoneNumberRepository.findByPhoneNumber(data.phoneNumber());
         if (old != null) {
@@ -38,7 +46,11 @@ public class PhoneNumberService {
         return listPhoneNumber;
     }
 
-    public void update(UpdatePhoneNumberDto phone) {
+    public void update(UpdatePhoneNumberDto phone) throws Exception {
+        var isValidNumber = phonevalidationService.phonevalidation(phone.phoneNumber()).getBody().valid();
+        if (!isValidNumber) {
+            throw new Exception("Celular invalido");
+        }
         PhoneNumber old = phoneNumberRepository.getReferenceById(phone.id());
         old.update(phone);
     }
