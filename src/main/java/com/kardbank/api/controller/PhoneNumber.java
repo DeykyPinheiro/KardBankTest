@@ -45,8 +45,4 @@ public class PhoneNumber {
     public void delete(@PathVariable Long id) {
         phoneNumberService.delete(id);
     }
-
-
-
-
 }
